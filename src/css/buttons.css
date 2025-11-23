@@ -1,0 +1,44 @@
+/* 🎯 STRONG OVERRIDE - Multiple approaches to force left alignment */
+div.back-button-container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  margin-bottom: 20px;
+  text-align: left !important;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Target the h2 specifically */
+div.back-button-container h2,
+.back-button-container > h2 {
+  text-align: left !important;
+  margin: 0 !important;
+  align-self: flex-start !important;
+  width: 100%;
+}
+
+/* Target the button specifically */
+div.back-button-container .back-button,
+.back-button-container > .back-button {
+  padding: 8px 16px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+  align-self: flex-start !important;
+  text-align: left !important;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+}
+
+/* 🔧 NUCLEAR OPTION - Override any inherited centering */
+.back-button-container * {
+  text-align: left !important;
+}

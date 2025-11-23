@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,17 @@
   to {
     transform: rotate(360deg);
   }
+} */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+main {
+  flex: 1; /* take all free space */
+}
+.page {
+  min-height: 100vh; /* full screen height */
+  display: flex; /* flex (פלקס, פְלֶקְס) layout (מבנה, לֵייאוּט) */
+  flex-direction: column; /* top → bottom */
 }
