@@ -7,90 +7,82 @@ function Game() {
   const { categoryName } = useParams();
   const { level } = useParams();
   const [cards, setCards] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
+
+  const flipCard = (clickedCard) => {
+    setCards((prevCards) =>
+      prevCards.map((card) => {
+        if (card.id === clickedCard.id) {
+          return { ...card, isFlipped: !card.isFlipped };
+        } else {
+          return card;
+        }
+      })
+    );
+  };
 
   useEffect(() => {
-    const showCards = vocabulary.filter(
+    const filteredCards = vocabulary.filter(
       (card) => card.category === categoryName && card.level === level
     );
-    setCards(showCards);
+    const transformedCards = filteredCards.map((wordData) => ({
+      id: wordData.id,
+      word: wordData.wordPt,
+      prononciation: wordData.prononciation, // Portuguese word (front of card)
+      translation: wordData.translationEn, // English translation (back of card)
+      category: wordData.category,
+      example: wordData.examplePt, // Portuguese example
+      exampleTranslation: wordData.exampleEn, // English example
+      tags: wordData.tags, // Grammar info
+      level: wordData.level, // Difficulty
+      hebrew: wordData.translationHe, // Hebrew translation\
+      isFlipped: false,
+    }));
+    setCards(transformedCards);
   }, [categoryName, level]);
 
-  // async function loadCategoryWords(categoryName) {
-  //   setIsLoading(true);
-  //   setError(null);
-  //   try {
-  //     const categoryWords = availableCategories[categoryName];
-  //     const transformedCards = categoryWords.map((wordData) => ({
-  //       id: wordData.id,
-  //       word: wordData.wordPt,
-  //       prononciation: wordData.prononciation, // Portuguese word (front of card)
-  //       translation: wordData.translationEn, // English translation (back of card)
-  //       category: wordData.category,
-  //       example: wordData.examplePt, // Portuguese example
-  //       exampleTranslation: wordData.exampleEn, // English example
-  //       tags: wordData.tags, // Grammar info
-  //       level: wordData.level, // Difficulty
-  //       hebrew: wordData.translationHe, // Hebrew translation
-  //     }));
+  const handleBackToLevels = () => {
+    navigate(`/categories/${categoryName}`);
+  };
 
-  //     setCards(transformedCards);
-  //     setSelectedCategory(categoryName);
-  //     setIsLoading(false);
-  //   } catch (error) {
-  //     setError(error.message);
-  //     setIsLoading(false);
-  //   }
-  // }
-  // const handleCategorySelect = (categoryName) => {
-  //   loadCategoryWords(categoryName);
-  // };
-  // const handleBackToCategories = () => {
-  //   setCards([]);
-  //   setSelectedCategory(null);
-  //   setError(null);
-  // };
+  const shuffleCards = () => {
+    const shuffled = [...cards].sort(() => Math.random() - 0.5);
+    setCards(shuffled);
+  };
 
-  // const showCards = (cards, level) => {
-  //   return cards.filter((card) => card.level === level);
-  // };
+  const turnAllCardsDown = () => {
+    setCards((prevCards) =>
+      prevCards.map((card) => ({ ...card, isFlipped: false }))
+    );
+  };
   return (
     <div>
-      <h1>Game</h1>
       {cards.length > 0 && categoryName && level && (
         <div>
-          <div
-            className="back-button-container"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
-              textAlign: "left",
-              width: "100%",
-            }}
-          >
-            <h2 style={{ textAlign: "left", margin: 0 }}>
+          <h1>Tap a card to view it in Portuguese or English.</h1>
+          <div className="button-container">
+            {/* <h2 style={{ textAlign: "left", margin: 0 }}>
               ({cards.length} cards)
-            </h2>
-            {/* <button
-              className="back-button"
-              onClick={handleBackToCategories}
-              style={{ alignSelf: "flex-start", textAlign: "left" }}
+            </h2> */}
+
+            <button className="regular-button" onClick={handleBackToLevels}>
+              ← Back to Levels
+            </button>
+
+            <button className="regular-button" onClick={() => shuffleCards()}>
+              Shuffle Cards
+            </button>
+            <button
+              className="regular-button"
+              onClick={() => turnAllCardsDown(cards)}
             >
-              ← Back to Categories
-            </button> */}
+              Turn All Cards Down
+            </button>
           </div>
-
-          <p>Click any card to flip between Portuguese and English!</p>
-          <p style={{ color: "#666", fontSize: "14px" }}>
-            💡 Your vocabulary includes examples, grammar info, and Hebrew
-            translations!
-          </p>
-
           <div className="cards-grid" style={{ marginTop: "20px" }}>
             {cards.map((card) => (
-              <Card key={card.id} card={card} />
+              <Card key={card.id} card={card} flipCard={() => flipCard(card)} />
             ))}
           </div>
         </div>

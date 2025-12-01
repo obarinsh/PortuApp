@@ -42,10 +42,106 @@ body {
   margin: 0;
 }
 main {
-  flex: 1; /* take all free space */
+  flex: 1;
+  background-color: #d4e8f2; /* take all free space */
+}
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 .page {
   min-height: 100vh; /* full screen height */
   display: flex; /* flex (פלקס, פְלֶקְס) layout (מבנה, לֵייאוּט) */
   flex-direction: column; /* top → bottom */
+}
+
+.categories-container-wrapper {
+  background: rgba(255, 241, 181, 0.3);
+  border-radius: 28px;
+  padding: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+.categories-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+h1,
+h2 {
+  font-family: "Nifty", sans-serif;
+  color: #553c3d;
+}
+
+.levels-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* 3 equal parts */
+  height: 100vh;
+}
+
+.levels-buttons-container {
+  background-color: rgba(255, 241, 181, 0.3);
+  height: 250px;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* .home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px 64px;
+}
+
+.home-arch {
+  width: min(1100px, 100% - 32px);
+  background: #fff1b5; /* your light blue */
+/* color: #111827;
+  border-radius: 50% 50% 0 0 / 140px 140px 0 0;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.15);
+  max-height: 420px;
+  overflow-y: auto; /* Remove after testing */
+/* } */
+.home-arch-text {
+  font-family: "Nifty", sans-serif;
+  color: #553c3d;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.25;
+  margin-top: 120px;
+}
+.home-container {
+  /* min-height: 100vh; full screen height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 16px 64px;
+}
+
+/* blue arch background */
+.home-arch {
+  width: min(1100px, 100% - 32px); /* responsive width */
+  background: rgba(255, 241, 181, 0.8);
+  border-radius: 50% 50% 0 0 / 140px 140px 0 0;
+  padding: 32px 24px 40px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -1,11 +1,12 @@
 .footer {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #111;
-  text-align: center;
-  color: #fff;
+  /* align-items: center; */
+  justify-content: flex-start;
+  font-family: "Nifty", sans-serif;
+  background-color: #43302e;
+  /* text-align: center; */
+  color: #fff1b5;
   padding: 20px;
   margin-top: auto;
 }
@@ -14,6 +15,7 @@
 .footer h1 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
+  color: #fff1b5;
 }
 
 .footer p {

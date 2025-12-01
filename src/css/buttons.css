@@ -1,44 +1,53 @@
 /* 🎯 STRONG OVERRIDE - Multiple approaches to force left alignment */
-div.back-button-container {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  justify-content: flex-start !important;
-  margin-bottom: 20px;
-  text-align: left !important;
-  width: 100%;
-  max-width: 100%;
-}
-
-/* Target the h2 specifically */
-div.back-button-container h2,
-.back-button-container > h2 {
-  text-align: left !important;
-  margin: 0 !important;
-  align-self: flex-start !important;
-  width: 100%;
-}
-
-/* Target the button specifically */
-div.back-button-container .back-button,
-.back-button-container > .back-button {
-  padding: 8px 16px;
-  background-color: #6c757d;
-  color: white;
-  border: none;
-  border-radius: 4px;
+.regular-button {
+  color: #43302e;
+  /* border: none; */
+  font-family: "Nifty", sans-serif;
   cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.2s;
+  margin: 10px;
   align-self: flex-start !important;
   text-align: left !important;
+  background: #fff1b5;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 2px solid #e4dba0;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
-
-.back-button:hover {
-  background-color: #5a6268;
+.regular-button:hover {
+  background: #ffe98a;
+  transform: translateY(-2px);
 }
-
-/* 🔧 NUCLEAR OPTION - Override any inherited centering */
-.back-button-container * {
-  text-align: left !important;
+.category-button {
+  border-radius: 18px;
+  border: none;
+  /* width: 100px;
+  height: 60px; */
+  background-color: rgba(#ffe98a, 0.1); /* Almost transparent white */
+  font-family: "Nifty", sans-serif;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0; /* Remove padding to avoid size conflicts */
+  margin: 10px;
+}
+.category-button-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: rgba(247, 247, 247, 0.042);
+  color: #553c3d;
+  /* opacity: 1; */
+  font-family: "Arapey", sans-serif;
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); Strong shadow for readability */
+  margin: 0;
+  padding: 20px;
+  white-space: nowrap;
+  text-align: center;
 }

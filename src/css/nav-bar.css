@@ -4,7 +4,7 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  background-color: #f0f8ff;
+  background-color: #43302e;
   border-radius: 5px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   width: 100%;
@@ -23,29 +23,30 @@
   z-index: 1;
   padding: 10px 30px;
   cursor: pointer;
-  color: #666; /* Changed from #ccc for better visibility */
+  font-family: "Nifty", sans-serif;
+
+  color: #fff1b5; /* Changed from #ccc for better visibility */
   /* border-radius: 6px; */
   transition: all 0.3s ease; /* Smooth hover transition */
   white-space: nowrap; /* Prevent text wrapping */
 }
 
-.nav-item:hover {
-  background-color: rgba(45, 66, 90, 0.1);
-  color: #2d425a;
-}
+/* .nav-item:hover {
+  background-color: #fff1b5;
+  /* color: #fff1b5; */
+/* }  */
 
 /* ACTIVE TAB — very visible for testing */
 .nav-item.active {
-  outline: 1px solid lime;
+  /* outline: 1px solid lime; */
   font-weight: bold;
   background: transparent;
-  color: white;
+  color: #43302e;
   /* border-radius: 8px; */
   /* transform: translateY(-1px); Slight lift effect */
 }
 
 .hori-selector {
-  outline: 1px solid lime;
   position: absolute;
   top: 0;
   left: 0;
@@ -54,7 +55,8 @@
   background: transparent;
   border: none;
   transition: all 0.3s ease;
-  background: #2d425a;
+  background: #fff1b5;
+  opacity: 0.7;
   border-radius: 8px;
   z-index: 0; /* or 0, experiment depending on design */
 }
